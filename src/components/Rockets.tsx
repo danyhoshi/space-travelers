@@ -1,8 +1,25 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import sunimage from '../assets/sun.webp'
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
+import { useEffect } from 'react'
+import { getDataRockets } from '../redux/features/DataRocketsSlice';
+import { AppDispatch } from '../redux/store';
 
 function Rockets() {
+
+  const dispatch: AppDispatch = useDispatch()
+
+  const rockets = useSelector((state: RootState) => state.rockets.data)
+
+  useEffect(() => {
+    if(rockets.length === 0){
+      dispatch(getDataRockets())
+    }
+  },[])
+  
+
   return (
     <div className="d-flex justify-content-center flex-column flex-md-row align-items-center" >   
       <Card 
