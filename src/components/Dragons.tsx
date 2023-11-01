@@ -1,8 +1,21 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import sunimage from '../assets/sun.webp'
-
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../redux/store';
+import { useEffect } from 'react'
+import { AppDispatch } from '../redux/store';
+import { getDataDragons } from '../redux/features/DataDragonsSlice';
 function Dragons() {
+      
+  const dispatch: AppDispatch = useDispatch()
+  const dragons = useSelector((state: RootState) => state.dragons.data)
+
+  useEffect(() => {
+      if(dragons.length === 0){
+          dispatch(getDataDragons())
+      } 
+  },[])
   return (
     <div className="d-flex justify-content-center flex-column flex-md-row align-items-center" >   
       <Card 
