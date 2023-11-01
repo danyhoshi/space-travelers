@@ -10,6 +10,7 @@ import Missions from './components/Missions';
 import MyProfile from './components/MyProfile';
 import { Provider } from 'react-redux';
 import { setupStore } from './redux/store.tsx';
+
 const NavbarWrapper = () => {
   return(
     <>
