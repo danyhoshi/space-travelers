@@ -1,6 +1,6 @@
 function MyProfile() {
   return (
-    <div>Hello from MyProfile</div>
+    <div className="beige">Hello from MyProfile</div>
   )
 }
 
