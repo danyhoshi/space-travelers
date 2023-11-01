@@ -6,15 +6,12 @@ function Rockets() {
   return (
     <div className="d-flex justify-content-center flex-column flex-md-row align-items-center" >   
       <Card 
-        style={{ width: '18rem' 
-        
-      
-      }} 
+        style={{ width: '18rem' }} 
         className='my-2 mx-3' 
         bg = {'dark'}
         text={'light'}
       >
-        <Card.Img variant="top" src={sunimage} />
+        <Card.Img variant="top" src={sunimage}   />
         <Card.Body className="d-flex flex-column align-items-center">
           <Card.Title className='fs-2 fw-bolder'>
             Rocket name
@@ -24,7 +21,6 @@ function Rockets() {
           </Card.Text>
           <Button 
             variant = 'primary'
-            
           >
             Reserve Rocket
           </Button>
@@ -32,10 +28,7 @@ function Rockets() {
       </Card>
 
       <Card 
-        style={{ width: '18rem' 
-        
-      
-      }} 
+        style={{ width: '18rem' }} 
         className='my-2 mx-3' 
         bg = {'dark'}
         text={'light'}
@@ -50,15 +43,11 @@ function Rockets() {
           </Card.Text>
           <Button 
             variant = 'primary'
-            
           >
             Reserve Rocket
           </Button>
         </Card.Body>
       </Card>
-
-      
-
     </div>
   )
 }
