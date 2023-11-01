@@ -1,10 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import type { PreloadedState } from '@reduxjs/toolkit'
 import DataMissionsSlice from './features/DataMissionsSlice'
+import DataRocketsSlice from './features/DataRocketsSlice'
 
 const rootReducer = combineReducers({
     missions: DataMissionsSlice,
-    
+    rockets: DataRocketsSlice
   })
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
