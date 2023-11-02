@@ -5,3 +5,10 @@ body {
   padding: 0;
 }
 
+.wrapper{
+ min-height: 40rem;
+}
+
+.txtdescription {
+  min-height: 16rem;
+}
