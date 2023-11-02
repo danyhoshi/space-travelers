@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface datamission {
+    id: string
     name: string
     image: string
     attempts: number
@@ -52,6 +53,7 @@ const DataMissionsSlice = createSlice({
         wholedata.forEach(element => {
             outdata.push(
                 {
+                    id: element.id,
                     name: element.name,
                     image: element.images.large[0],
                     attempts: element.launch_attempts,
