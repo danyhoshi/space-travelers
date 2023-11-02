@@ -27,8 +27,8 @@ const Missions = () => {
         <Container>
             <Table striped variant = {'dark'}>
               <thead>
-                <tr>
-                  <th>Mission</th>
+                <tr className='text-center'>
+                  <th >Missions</th>
                   <th>Launchpad</th>
                   <th>successes / attempts</th>
                   <th>Status</th>
@@ -39,12 +39,12 @@ const Missions = () => {
                 {loading ? <h2 className='text-center'>Loading...</h2> :
                 missions.map((mission: datamission) => {
                   return (
-                    <tr>
-                      <td>{mission.name}</td>
-                      <td><img src = {mission.image} width={'100rem'} height={'75rem'} /></td>
-                      <td>{mission.successes} / {mission.attempts}</td>
-                      <td>NOT A MEMBER</td>
-                      <td>
+                    <tr className='align-middle'>
+                      <td >{mission.name}</td>
+                      <td className='text-center'><img src = {mission.image} width={'100rem'} height={'75rem'} /></td>
+                      <td className='text-center'>{mission.successes} / {mission.attempts}</td>
+                      <td className='text-center' >NOT A MEMBER</td>
+                      <td className='text-center'>
                         <button
                           onClick = {(e) => handleClick(e)}
                           className='bg-info'>
