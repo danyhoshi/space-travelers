@@ -24,7 +24,7 @@ const Missions = () => {
     dispatch(setJoinMission(parseInt(e.currentTarget.id)))
   }
     return (
-        <Container>
+        <Container style={{marginTop: '4rem'}}>
             <Table striped variant = {'dark'}>
               <thead>
                 <tr className='text-center'>

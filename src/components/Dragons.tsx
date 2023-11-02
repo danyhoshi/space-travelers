@@ -17,7 +17,7 @@ function Dragons() {
       } 
   },[])
   return (
-    <div className="d-flex justify-content-center flex-column flex-md-row align-items-center" >   
+    <div style={{marginTop: '4rem'}} className="d-flex justify-content-center flex-column flex-md-row align-items-center" >   
       <Card 
         style={{ width: '18rem'}} 
         className='my-2 mx-3' 
