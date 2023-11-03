@@ -42,13 +42,12 @@ const Dragons = () => {
                     <Card.Title className='fs-2 fw-bolder'>
                       { dragon.name }
                     </Card.Title>
-                    <Card.Text className='text-center'>
+                    <Card.Text  style={{ width: '100%', height: '23rem'}} className='text-center'>
                       {!dragon.selected ? dragon.description : <span><span className='reserved'>RESERVED</span>{dragon.description}</span>}
                     </Card.Text>
                     <Button 
                       id = { dragon.id }
                       variant = 'primary'
-                      className = 'position-absolute bottom-0 start-50 translate-middle-x my-3'
                     >
                       Reserve Dragon
                     </Button>
