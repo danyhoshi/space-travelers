@@ -23,7 +23,7 @@ function Rockets() {
   
 
   return (
-    <Container fluid> 
+    <Container fluid='xl' className='mt-5'> 
       <Row className="justify-content-center p-1"> 
         {loading ? <h2>Loading...</h2> :
         rockets.map(rocket => {        
