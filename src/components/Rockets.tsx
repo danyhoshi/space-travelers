@@ -1,16 +1,18 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import sunimage from '../assets/sun.webp'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import { useEffect } from 'react'
 import { getDataRockets } from '../redux/features/DataRocketsSlice';
 import { AppDispatch } from '../redux/store';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
 function Rockets() {
 
   const dispatch: AppDispatch = useDispatch()
-
+  const loading = useSelector((state: RootState) => state.rockets.loading)
   const rockets = useSelector((state: RootState) => state.rockets.data)
 
   useEffect(() => {
@@ -21,51 +23,43 @@ function Rockets() {
   
 
   return (
-    <div style={{marginTop: '4rem'}} className="d-flex justify-content-center flex-column flex-md-row align-items-center" >   
-      <Card 
-        style={{ width: '18rem' }} 
-        className='my-2 mx-3' 
-        bg = {'dark'}
-        text={'light'}
-      >
-        <Card.Img variant="top" src={sunimage}   />
-        <Card.Body className="d-flex flex-column align-items-center">
-          <Card.Title className='fs-2 fw-bolder'>
-            Rocket name
-          </Card.Title>
-          <Card.Text className='text-center'>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus enim sit dolorum voluptate quae facilis dignissimos fugiat architecto tenetur libero omnis minima distinctio expedita nam unde, maxime ut alias blanditiis.
-          </Card.Text>
-          <Button 
-            variant = 'primary'
-          >
-            Reserve Rocket
-          </Button>
-        </Card.Body>
-      </Card>
-
-      <Card 
-        style={{ width: '18rem' }} 
-        className='my-2 mx-3' 
-        bg = {'dark'}
-        text={'light'}
-      >
-        <Card.Img variant="top" src={sunimage} />
-        <Card.Body className="d-flex flex-column align-items-center">
-          <Card.Title className='fs-2 fw-bolder'>
-            Rocket name
-          </Card.Title>
-          <Card.Text className='text-center'>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus enim sit dolorum voluptate quae facilis dignissimos fugiat architecto tenetur libero omnis minima distinctio expedita nam unde, maxime ut alias blanditiis.
-          </Card.Text>
-          <Button 
-            variant = 'primary'
-          >
-            Reserve Rocket
-          </Button>
-        </Card.Body>
-      </Card>
-    </div>
+    <Container fluid> 
+      <Row className="justify-content-center p-1"> 
+        {loading ? <h2>Loading...</h2> :
+        rockets.map(rocket => {        
+        return(
+          <Col className='d-flex justify-content-center'>
+            <Card 
+              style={{ width: '16rem' }} 
+              className='my-3'
+              bg = {'dark'}
+              text={'light'}
+            >
+              <Card.Img 
+                variant="top" 
+                src={rocket.image} 
+                style={{ height: '16rem' }} 
+                className='object-fit-cover' 
+              />
+              <Card.Body className="d-flex flex-column align-items-center">
+                <Card.Title className='fs-2 fw-bolder'>
+                  {rocket.name}
+                </Card.Title>
+                <Card.Text className='text-center d-flex flex-grow-1'>
+                  {rocket.description}
+                </Card.Text>
+                <Button 
+                  variant = 'primary'
+                >
+                  Reserve Rocket
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        )})
+        }
+      </Row>    
+    </Container> 
   )
 }
 
