@@ -11,8 +11,8 @@ import { LinkContainer } from 'react-router-bootstrap'
 
   return (
     <>
-        <Navbar key={expand} expand={expand} bg="dark" data-bs-theme="dark" className="bg-body-tertiary mb-3" collapseOnSelect>      
-          <Container fluid >
+        <Navbar key={expand} expand={expand} bg="dark" data-bs-theme="dark" className="bg-body-tertiary mb-3 fixed-top" collapseOnSelect>      
+          <Container fluid className='container-sm container-xxl container-md container-xl'>
             <img src = {sunimage} width='40' height='40' alt='sunimage' />
             <Navbar.Brand href="#">Space Travelers' Hub</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />

@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap"
 
 function MyProfile() {
   return (
-    <Container className="d-flex flex-row">
+    <Container style={{marginTop: '4rem'}} className="d-flex flex-row">
       <div className="d-flex flex-column container-sm" >
         <h2>My Missions</h2>
       </div>
