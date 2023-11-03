@@ -30,13 +30,12 @@ const Dragons = () => {
           <img src = {loadingSVG} alt = 'loading-svg'/> :  
             dragons.map((dragon: data) => {
               return (
-                <Col className='d-flex justify-content-center'>
+                <Col className='d-flex justify-content-center' key = { dragon.id }>
                 <Card 
                   style={{ width: '23rem', height: '50rem'}} 
                   className='my-2 mx-3 position-relative' 
                   bg = {'dark'}
                   text={'light'}
-                  key = { dragon.id }
                 >
                   <Card.Img className='image' variant="top" src={ dragon.image }   />
                   <Card.Body className="d-flex flex-column align-items-center">
