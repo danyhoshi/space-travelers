@@ -5,3 +5,14 @@ body {
   padding: 0;
 }
 
+.card-img-top {
+  height: 300px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.reserved {
+  background-color: #1ca4b9;
+  font-weight: bold;
+  margin-right: 0.2rem;
+}
