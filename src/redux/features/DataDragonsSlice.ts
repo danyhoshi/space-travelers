@@ -39,7 +39,9 @@ const DataDragonsSlice = createSlice({
   initialState,
   reducers: {
     setSelectedDragon: (state, action) => {
-        state.data[action.payload].selected = !state.data[action.payload].selected
+      state.data.map((dragon: data) => {
+        dragon.id === action.payload ? dragon.selected = !dragon.selected : dragon
+      })
     },
   },
   extraReducers: (builder) => {
