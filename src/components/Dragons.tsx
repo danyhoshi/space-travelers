@@ -38,8 +38,8 @@ const Dragons = () => {
                     <Card.Title className='fs-2 fw-bolder'>
                       { dragon.name }
                     </Card.Title>
-                    <Card.Text className='text-center d-inline-flex'>
-                      {!dragon.selected ? dragon.description : <span><span className='reserved'>RESERVED </span>{dragon.description}</span>}
+                    <Card.Text className='text-center'>
+                      {!dragon.selected ? dragon.description : <span><span className='reserved'>RESERVED</span>{dragon.description}</span>}
                     </Card.Text>
                     <Button 
                       id = { dragon.id }
