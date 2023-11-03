@@ -7,6 +7,7 @@ import { AppDispatch } from '../redux/store';
 import { setJoinMission } from '../redux/features/DataMissionsSlice';
 import { getDataMissions } from '../redux/features/DataMissionsSlice';
 import { datamission } from '../redux/features/DataMissionsSlice';
+import '../index.css'
 
 const Missions = () => {
 
