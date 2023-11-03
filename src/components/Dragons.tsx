@@ -1,4 +1,7 @@
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
@@ -21,13 +24,15 @@ const Dragons = () => {
 
       return (
       
-        <div style={{marginTop: '4rem'}} className="d-flex justify-content-center flex-column flex-md-row align-items-center" >
+        <Container style={{marginTop: '4rem'}}> 
+             <Row className="justify-content-md-center"> 
         {loading ?    
           <img src = {loadingSVG} alt = 'loading-svg'/> :  
             dragons.map((dragon: data) => {
               return (
+                <Col className='d-flex justify-content-center'>
                 <Card 
-                  style={{ width: '23rem', height: '730px'}} 
+                  style={{ width: '23rem', height: '50rem'}} 
                   className='my-2 mx-3 position-relative' 
                   bg = {'dark'}
                   text={'light'}
@@ -50,10 +55,12 @@ const Dragons = () => {
                     </Button>
                   </Card.Body>
                 </Card>
+                </Col>
               )
             })
         }
-    </div>
+        </Row>
+    </Container>
   )
 }
 
