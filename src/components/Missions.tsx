@@ -1,4 +1,5 @@
 import { Container } from 'react-bootstrap';
+import Badge from 'react-bootstrap/Badge'
 import Table from 'react-bootstrap/Table'
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
@@ -46,7 +47,7 @@ const Missions = () => {
                   <td >{mission.name}</td>
                   <td className='text-center'><img src = {mission.image} width={'100rem'} height={'75rem'} /></td>
                   <td className='text-center'>{mission.successes} / {mission.attempts}</td>
-                  <td className='text-center' >NOT A MEMBER</td>
+                  <td className='text-center' >{!mission.join ? 'NOT A MEMBER' : <Badge style={{fontSize: "1rem"}} className='primary'>RESERVED</Badge>}</td>
                   <td className='text-center'>
                     <button
                       onClick = {() => handleClick(mission.id)}
