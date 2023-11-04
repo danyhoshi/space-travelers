@@ -28,9 +28,10 @@ function Rockets() {
 }
 
   return (
-    <Container fluid style={{marginTop: '3.4rem'}}> 
+    // <Container fluid style={{marginTop: '3.4rem'}}> 
+    <Container fluid='xl' className='mt-5'> 
       <Row className="justify-content-center p-1"> 
-        {loading ? <img src={loadingSVG} width={'200rem'} height={'200rem'} className='my-5 rounded mx-auto d-block'/> :
+        {loading ? <img src={loadingSVG} width={'200rem'} height={'200rem'} className='my-5 rounded mx-auto d-block' alt = 'loading-svg'/> :
         rockets.map(rocket => {        
         return(
           <Col className='d-flex justify-content-center' key = { rocket.id }>
