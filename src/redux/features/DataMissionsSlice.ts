@@ -39,8 +39,9 @@ const DataMissionsSlice = createSlice({
   initialState,
   reducers: {
     setJoinMission: (state, action) => {
-        state.datamissions[action.payload].join = !state.datamissions[action.payload].join
-    },
+      state.datamissions.map((mission: datamission) => {
+        mission.id === action.payload ? mission.join = !mission.join : mission
+      })}
   },
   extraReducers: (builder) => {
     builder.addCase(getDataMissions.pending, (state) => {
