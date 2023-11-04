@@ -1,6 +1,7 @@
 import { Container } from 'react-bootstrap';
 import Badge from 'react-bootstrap/Badge'
 import Table from 'react-bootstrap/Table'
+import Button from 'react-bootstrap/Button'
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { useEffect } from 'react'
@@ -49,11 +50,11 @@ const Missions = () => {
                   <td className='text-center'>{mission.successes} / {mission.attempts}</td>
                   <td className='text-center' >{!mission.join ? 'NOT A MEMBER' : <Badge style={{fontSize: "1rem"}} className='primary'>RESERVED</Badge>}</td>
                   <td className='text-center'>
-                    <button
+                    <Button
                       onClick = {() => handleClick(mission.id)}
-                      className='bg-info'>
-                        Join Mission
-                    </button>
+                      variant={!mission.join ? "primary" : "danger"}>
+                        {!mission.join ? 'Join Mission' : 'Leave Mission'}
+                    </Button>
                   </td>
                 </tr>
               )})  
