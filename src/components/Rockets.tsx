@@ -8,6 +8,7 @@ import { AppDispatch } from '../redux/store';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import { setSelectedRocket } from '../redux/features/DataRocketsSlice';
 import loadingSVG from '../assets/loading.svg'
 
 function Rockets() {
@@ -22,8 +23,12 @@ function Rockets() {
     }
   },[])
   
+  const handleClick = (e: React.MouseEvent) => {
+    dispatch(setSelectedRocket(e.currentTarget.id))
+}
 
   return (
+    // <Container fluid style={{marginTop: '3.4rem'}}> 
     <Container fluid='xl' className='mt-5'> 
       <Row className="justify-content-center p-1"> 
         {loading ? <img src={loadingSVG} width={'200rem'} height={'200rem'} className='my-5 rounded mx-auto d-block' alt = 'loading-svg'/> :
@@ -50,7 +55,9 @@ function Rockets() {
                   {rocket.description}
                 </Card.Text>
                 <Button 
+                  id={rocket.id}
                   variant = 'primary'
+                  onClick={(e) => handleClick(e)}
                 >
                   Reserve Rocket
                 </Button>
