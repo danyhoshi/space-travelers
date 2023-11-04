@@ -42,7 +42,6 @@ const DataRocketsSlice = createSlice({
       const index = state.data.findIndex((rocket:data) => {
         return rocket.id === action.payload;
       });
-      console.log('id: ', action.payload)
       state.data[index].selected = !state.data[index].selected
     },
   },
