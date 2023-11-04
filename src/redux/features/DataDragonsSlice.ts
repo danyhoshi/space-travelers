@@ -49,7 +49,7 @@ const DataDragonsSlice = createSlice({
       state.loading = true
     }),
     builder.addCase(getDataDragons.fulfilled, (state, action) => {
-        state.loading = false 
+        state.loading = false
         const wholedata: any[] = action.payload
         const outdata: data[] = []
         wholedata.forEach(element => {

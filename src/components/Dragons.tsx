@@ -10,6 +10,7 @@ import { AppDispatch } from '../redux/store';
 import { getDataDragons, setSelectedDragon } from '../redux/features/DataDragonsSlice';
 import loadingSVG from '../assets/loading.svg'
 import { data } from '../redux/features/DataDragonsSlice';
+
 const Dragons = () => {
       
   const dispatch: AppDispatch = useDispatch()
@@ -30,7 +31,7 @@ const Dragons = () => {
   return (
     <Container style={{marginTop: '4rem'}}> 
       <Row className="justify-content-md-center"> 
-        {loading ? <img src = {loadingSVG} alt = 'loading-svg'/> :  
+        {loading ? <img src={loadingSVG} width={'200rem'} height={'200rem'} className='my-5 rounded mx-auto d-block' alt = 'loading-svg'/> :  
         dragons.map((dragon: data) => {
           return (
             <Col className='d-flex justify-content-center' key = { dragon.id }>

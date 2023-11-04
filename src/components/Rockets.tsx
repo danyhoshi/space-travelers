@@ -8,6 +8,7 @@ import { AppDispatch } from '../redux/store';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import loadingSVG from '../assets/loading.svg'
 
 function Rockets() {
 
@@ -25,7 +26,7 @@ function Rockets() {
   return (
     <Container fluid='xl' className='mt-5'> 
       <Row className="justify-content-center p-1"> 
-        {loading ? <h2>Loading...</h2> :
+        {loading ? <img src={loadingSVG} width={'200rem'} height={'200rem'} className='my-5 rounded mx-auto d-block' alt = 'loading-svg'/> :
         rockets.map(rocket => {        
         return(
           <Col className='d-flex justify-content-center' key = { rocket.id }>
