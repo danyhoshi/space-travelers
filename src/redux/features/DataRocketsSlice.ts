@@ -39,7 +39,11 @@ const DataRocketsSlice = createSlice({
   initialState,
   reducers: {
     setSelectedRocket: (state, action) => {
-        state.data[action.payload].selected = !state.data[action.payload].selected
+      const index = state.data.findIndex((rocket:data) => {
+        return rocket.id === action.payload;
+      });
+      console.log('id: ', action.payload)
+      state.data[index].selected = !state.data[index].selected
     },
   },
   extraReducers: (builder) => {

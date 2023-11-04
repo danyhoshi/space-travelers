@@ -8,6 +8,7 @@ import { AppDispatch } from '../redux/store';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import { setSelectedRocket } from '../redux/features/DataRocketsSlice';
 
 function Rockets() {
 
@@ -21,6 +22,9 @@ function Rockets() {
     }
   },[])
   
+  const handleClick = (e: React.MouseEvent) => {
+    dispatch(setSelectedRocket(e.currentTarget.id))
+}
 
   return (
     <Container fluid> 
@@ -49,7 +53,9 @@ function Rockets() {
                   {rocket.description}
                 </Card.Text>
                 <Button 
+                  id={rocket.id}
                   variant = 'primary'
+                  onClick={(e) => handleClick(e)}
                 >
                   Reserve Rocket
                 </Button>
