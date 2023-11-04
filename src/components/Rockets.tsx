@@ -32,7 +32,7 @@ function Rockets() {
         {loading ? <h2>Loading...</h2> :
         rockets.map(rocket => {        
         return(
-          <Col className='d-flex justify-content-center'>
+          <Col className='d-flex justify-content-center' key = { rocket.id }>
             <Card 
               style={{ width: '16rem' }} 
               className='my-3'

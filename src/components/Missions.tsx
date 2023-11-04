@@ -25,7 +25,7 @@ const Missions = () => {
     dispatch(setJoinMission(parseInt(e.currentTarget.id)))
   }
     return (
-        <Container>
+        <Container style={{marginTop: '4rem'}}>
             <Table striped variant = {'dark'}>
               <thead>
                 <tr className='text-center'>
@@ -40,7 +40,7 @@ const Missions = () => {
                 {loading ? <h2 className='text-center'>Loading...</h2> :
                 missions.map((mission: datamission) => {
                   return (
-                    <tr className='align-middle'>
+                    <tr className='align-middle' key = { mission.id }>
                       <td >{mission.name}</td>
                       <td className='text-center'><img src = {mission.image} width={'100rem'} height={'75rem'} /></td>
                       <td className='text-center'>{mission.successes} / {mission.attempts}</td>
