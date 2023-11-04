@@ -22,8 +22,8 @@ const Missions = () => {
       } 
   },[])
 
-  const handleClick = (e: React.MouseEvent) => {
-    dispatch(setJoinMission(parseInt(e.currentTarget.id)))
+  const handleClick = (id: string) => {
+    dispatch(setJoinMission(id))
   }
     
   return(
@@ -49,7 +49,7 @@ const Missions = () => {
                   <td className='text-center' >NOT A MEMBER</td>
                   <td className='text-center'>
                     <button
-                      onClick = {(e) => handleClick(e)}
+                      onClick = {() => handleClick(mission.id)}
                       className='bg-info'>
                         Join Mission
                     </button>
