@@ -9,6 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import { setSelectedRocket } from '../redux/features/DataRocketsSlice';
+import loadingSVG from '../assets/loading.svg'
 
 function Rockets() {
 
@@ -27,9 +28,9 @@ function Rockets() {
 }
 
   return (
-    <Container fluid> 
+    <Container fluid style={{marginTop: '3.4rem'}}> 
       <Row className="justify-content-center p-1"> 
-        {loading ? <h2>Loading...</h2> :
+        {loading ? <img src={loadingSVG} width={'200rem'} height={'200rem'} className='my-5 rounded mx-auto d-block'/> :
         rockets.map(rocket => {        
         return(
           <Col className='d-flex justify-content-center' key = { rocket.id }>
