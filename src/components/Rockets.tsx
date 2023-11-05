@@ -10,6 +10,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import { setSelectedRocket } from '../redux/features/DataRocketsSlice';
 import loadingSVG from '../assets/loading.svg'
+import Badge from 'react-bootstrap/Badge';
 
 function Rockets() {
 
@@ -27,8 +28,7 @@ function Rockets() {
     dispatch(setSelectedRocket(e.currentTarget.id))
 }
 
-  return (
-    // <Container fluid style={{marginTop: '3.4rem'}}> 
+  return ( 
     <Container fluid='xl' className='mt-5'> 
       <Row className="justify-content-center p-1"> 
         {loading ? <img src={loadingSVG} width={'200rem'} height={'200rem'} className='my-5 rounded mx-auto d-block' alt = 'loading-svg'/> :
@@ -52,14 +52,14 @@ function Rockets() {
                   {rocket.name}
                 </Card.Title>
                 <Card.Text className='text-center d-flex flex-grow-1'>
-                  {rocket.description}
+                  {!rocket.selected? <p>{rocket.description}</p> : <p><Badge bg="primary">Reserved</Badge> {rocket.description}</p>}
                 </Card.Text>
                 <Button 
                   id={rocket.id}
-                  variant = 'primary'
+                  variant = {!rocket.selected ? "primary" : 'secondary'}
                   onClick={(e) => handleClick(e)}
                 >
-                  Reserve Rocket
+                  {!rocket.selected ? 'Reserve Rocket' : 'Cancel Reservation'}
                 </Button>
               </Card.Body>
             </Card>
