@@ -23,8 +23,8 @@ function Rockets() {
     }
   },[])
   
-  const handleClick = (e: React.MouseEvent) => {
-    dispatch(setSelectedRocket(e.currentTarget.id))
+  const handleClick = (id: string) => {
+    dispatch(setSelectedRocket(id))
 }
 
   return (
@@ -55,9 +55,8 @@ function Rockets() {
                   {rocket.description}
                 </Card.Text>
                 <Button 
-                  id={rocket.id}
                   variant = 'primary'
-                  onClick={(e) => handleClick(e)}
+                  onClick={() => handleClick(rocket.id)}
                 >
                   Reserve Rocket
                 </Button>

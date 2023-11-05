@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import Badge from 'react-bootstrap/Badge'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card';
@@ -47,13 +48,13 @@ const Dragons = () => {
                   { dragon.name }
                 </Card.Title>
                 <Card.Text  style={{ width: '100%', height: '23rem'}} className='text-center'>
-                  {!dragon.selected ? dragon.description : <span><span className='reserved'>RESERVED</span>{dragon.description}</span>}
+                  {!dragon.selected ? dragon.description : <><Badge style={{fontSize: "1rem"}} className='primary'>RESERVED</Badge> {dragon.description}</>} 
                 </Card.Text>
                 <Button 
                   onClick={() => handleClick(dragon.id)}
-                  variant = 'primary'
+                  variant={!dragon.selected ? "primary" : "danger"}
                 >
-                  Reserve Dragon
+                  {!dragon.selected ? 'Reserve Dragon' : 'Leave Dragon'}
                 </Button>
                 </Card.Body>
               </Card>
