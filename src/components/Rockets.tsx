@@ -2,8 +2,6 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
-import { useEffect } from 'react'
-import { getDataRockets } from '../redux/features/DataRocketsSlice';
 import { AppDispatch } from '../redux/store';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -17,12 +15,6 @@ function Rockets() {
   const dispatch: AppDispatch = useDispatch()
   const loading = useSelector((state: RootState) => state.rockets.loading)
   const rockets = useSelector((state: RootState) => state.rockets.data)
-
-  useEffect(() => {
-    if(rockets.length === 0){
-      dispatch(getDataRockets())
-    }
-  },[])
   
   const handleClick = (e: React.MouseEvent) => {
     dispatch(setSelectedRocket(e.currentTarget.id))

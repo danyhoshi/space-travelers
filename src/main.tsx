@@ -9,9 +9,23 @@ import Dragons from './components/Dragons';
 import Missions from './components/Missions';
 import MyProfile from './components/MyProfile';
 import { Provider } from 'react-redux';
-import { setupStore } from './redux/store.tsx';
+import { AppDispatch, setupStore } from './redux/store.tsx';
+import { getDataRockets } from './redux/features/DataRocketsSlice.ts';
+import { getDataDragons } from './redux/features/DataDragonsSlice.ts';
+import { getDataMissions } from './redux/features/DataMissionsSlice.ts';
+import { useDispatch } from 'react-redux';
 
 const NavbarWrapper = () => {
+
+  const dispatch: AppDispatch = useDispatch()
+
+  const loadData = () => {
+    dispatch(getDataRockets())
+    dispatch(getDataDragons())
+    dispatch(getDataMissions())
+  }
+  loadData()
+  
   return(
     <>
       <MyNavbar />
