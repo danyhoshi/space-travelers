@@ -16,8 +16,8 @@ function Rockets() {
   const loading = useSelector((state: RootState) => state.rockets.loading)
   const rockets = useSelector((state: RootState) => state.rockets.data)
   
-  const handleClick = (e: React.MouseEvent) => {
-    dispatch(setSelectedRocket(e.currentTarget.id))
+  const handleClick = (id: string) => {
+    dispatch(setSelectedRocket(id))
 }
 
   return ( 
@@ -47,9 +47,8 @@ function Rockets() {
                   {!rocket.selected? <p>{rocket.description}</p> : <p><Badge bg="primary">Reserved</Badge> {rocket.description}</p>}
                 </Card.Text>
                 <Button 
-                  id={rocket.id}
                   variant = {!rocket.selected ? "primary" : 'secondary'}
-                  onClick={(e) => handleClick(e)}
+                  onClick={() => handleClick(rocket.id)}
                 >
                   {!rocket.selected ? 'Reserve Rocket' : 'Cancel Reservation'}
                 </Button>
