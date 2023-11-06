@@ -10,9 +10,11 @@ import { data } from "../redux/features/DataRocketsSlice";
 function MyProfile() {
   const missions = useSelector((state: RootState) => state.missions.datamissions)
   const rockets = useSelector((state: RootState) => state.rockets.data)
+  const dragons = useSelector((state: RootState) => state.dragons.data)
   
   const joindesMissions = missions.filter((mission: datamission) => mission.join)
   const reservedrockets = rockets.filter((rocket: data) => rocket.selected)
+  const reserveddragons = dragons.filter((dragon: data) => dragon.selected)
 
   return (
     <Container style={{marginTop: '4rem'}} fluid='xl'>
@@ -35,8 +37,14 @@ function MyProfile() {
             )})
           }
       </Col>
-      <Col>
+      <Col className='d-flex flex-column align-items-center'>
         <h2 className ="text-center">My Dragons</h2>
+        {
+            reserveddragons.map((dragon: data) => {
+              return (
+                  <Card key={ dragon.id } body bg='dark' border="primary" className ="text-center text-light fw-bold fs-5" style={{width: '12rem', marginBottom: '5px', borderWidth: '3px'}}>{dragon.name }</Card>
+            )})
+          }
       </Col>
     </Row>
   </Container>
