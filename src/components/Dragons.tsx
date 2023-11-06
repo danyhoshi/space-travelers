@@ -41,7 +41,7 @@ const Dragons = () => {
                   { dragon.name }
                 </Card.Title>
                 <Card.Text  style={{ width: '100%', height: '23rem'}} className='text-center'>
-                  {!dragon.selected ? dragon.description : <><Badge style={{fontSize: "1rem"}} className='primary'>RESERVED</Badge> {dragon.description}</>} 
+                  {!dragon.selected ? dragon.description : <><Badge bg="primary">Reserved</Badge> {dragon.description}</>} 
                 </Card.Text>
                 <Button 
                   onClick={() => handleClick(dragon.id)}

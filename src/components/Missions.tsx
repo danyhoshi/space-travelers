@@ -40,7 +40,7 @@ const Missions = () => {
                   <td >{mission.name}</td>
                   <td className='text-center'><img src = {mission.image} width={'100rem'} height={'75rem'} /></td>
                   <td className='text-center'>{mission.successes} / {mission.attempts}</td>
-                  <td className='text-center' >{!mission.join ? 'NOT A MEMBER' : <Badge style={{fontSize: "1rem"}} className='primary'>RESERVED</Badge>}</td>
+                  <td className='text-center' >{!mission.join ? 'Not a Member' : <Badge bg="primary">Active Member</Badge>}</td>
                   <td className='text-center'>
                     <Button
                       onClick = {() => handleClick(mission.id)}

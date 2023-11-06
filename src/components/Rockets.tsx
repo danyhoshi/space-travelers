@@ -18,7 +18,7 @@ function Rockets() {
   
   const handleClick = (id: string) => {
     dispatch(setSelectedRocket(id))
-}
+  }
 
   return ( 
     <Container fluid='xl' className='mt-5'> 
@@ -47,7 +47,7 @@ function Rockets() {
                   {!rocket.selected? <p>{rocket.description}</p> : <p><Badge bg="primary">Reserved</Badge> {rocket.description}</p>}
                 </Card.Text>
                 <Button 
-                  variant = {!rocket.selected ? "primary" : 'secondary'}
+                  variant = {!rocket.selected ? "primary" : 'danger'}
                   onClick={() => handleClick(rocket.id)}
                 >
                   {!rocket.selected ? 'Reserve Rocket' : 'Cancel Reservation'}
