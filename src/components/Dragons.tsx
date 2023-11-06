@@ -6,9 +6,8 @@ import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
-import { useEffect } from 'react'
 import { AppDispatch } from '../redux/store';
-import { getDataDragons, setSelectedDragon } from '../redux/features/DataDragonsSlice';
+import { setSelectedDragon } from '../redux/features/DataDragonsSlice';
 import loadingSVG from '../assets/loading.svg'
 import { data } from '../redux/features/DataDragonsSlice';
 
@@ -17,12 +16,6 @@ const Dragons = () => {
   const dispatch: AppDispatch = useDispatch()
   const dragons = useSelector((state: RootState) => state.dragons.data)
   const loading = useSelector((state: RootState) => state.dragons.loading)
-
-  useEffect(() => {
-      if(dragons.length === 0){
-          dispatch(getDataDragons())
-      } 
-  },[])
 
   const handleClick = (id: string) => {
     dispatch(setSelectedDragon(id))
@@ -48,7 +41,7 @@ const Dragons = () => {
                   { dragon.name }
                 </Card.Title>
                 <Card.Text  style={{ width: '100%', height: '23rem'}} className='text-center'>
-                  {!dragon.selected ? dragon.description : <><Badge style={{fontSize: "1rem"}} className='primary'>RESERVED</Badge> {dragon.description}</>} 
+                  {!dragon.selected ? dragon.description : <><Badge bg="primary">Reserved</Badge> {dragon.description}</>} 
                 </Card.Text>
                 <Button 
                   onClick={() => handleClick(dragon.id)}

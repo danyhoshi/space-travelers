@@ -4,10 +4,8 @@ import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
-import { useEffect } from 'react'
 import { AppDispatch } from '../redux/store';
 import { setJoinMission } from '../redux/features/DataMissionsSlice';
-import { getDataMissions } from '../redux/features/DataMissionsSlice';
 import { datamission } from '../redux/features/DataMissionsSlice';
 import '../index.css'
 import loadingSVG from '../assets/loading.svg'
@@ -17,12 +15,6 @@ const Missions = () => {
   const dispatch: AppDispatch = useDispatch()
   const missions = useSelector((state: RootState) => state.missions.datamissions)
   const loading = useSelector((state: RootState) => state.missions.loading)
-
-  useEffect(() => {
-      if(missions.length === 0){
-        dispatch(getDataMissions())
-      } 
-  },[])
 
   const handleClick = (id: string) => {
     dispatch(setJoinMission(id))
@@ -48,7 +40,7 @@ const Missions = () => {
                   <td >{mission.name}</td>
                   <td className='text-center'><img src = {mission.image} width={'100rem'} height={'75rem'} /></td>
                   <td className='text-center'>{mission.successes} / {mission.attempts}</td>
-                  <td className='text-center' >{!mission.join ? 'NOT A MEMBER' : <Badge style={{fontSize: "1rem"}} className='primary'>RESERVED</Badge>}</td>
+                  <td className='text-center' >{!mission.join ? 'Not a Member' : <Badge bg="primary">Active Member</Badge>}</td>
                   <td className='text-center'>
                     <Button
                       onClick = {() => handleClick(mission.id)}
