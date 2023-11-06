@@ -44,7 +44,7 @@ function Rockets() {
                   {rocket.name}
                 </Card.Title>
                 <Card.Text className='text-center d-flex flex-grow-1'>
-                  {!rocket.selected? <p>{rocket.description}</p> : <p><Badge bg="primary">Reserved</Badge> {rocket.description}</p>}
+                  {!rocket.selected? rocket.description : <span><Badge bg="primary">Reserved</Badge> {rocket.description}</span>}
                 </Card.Text>
                 <Button 
                   variant = {!rocket.selected ? "primary" : 'danger'}
