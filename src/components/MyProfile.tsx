@@ -17,7 +17,7 @@ function MyProfile() {
           {
             joindesMissions.map((mission: datamission) => {
               return (
-                  <Card body bg='dark' border="info" className ="text-center text-light fw-bold fs-5" style={{width: '12rem', marginBottom: '5px'}}>{mission.name }</Card>
+                  <Card key={ mission.id } body bg='dark' border="primary" className ="text-center text-light fw-bold fs-5" style={{width: '12rem', marginBottom: '5px', borderWidth: '3px'}}>{mission.name }</Card>
             )})
           }
       </Col>
