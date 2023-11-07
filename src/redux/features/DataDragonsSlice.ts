@@ -63,7 +63,6 @@ const DataDragonsSlice = createSlice({
                 }
             )
         })
-        //state.data = outdata
         state.data = localStorage.getItem('dragons') ? JSON.parse(localStorage.getItem('dragons') || '') : outdata
     }),
     builder.addCase(getDataDragons.rejected, (state, action: PayloadAction<any>) => {

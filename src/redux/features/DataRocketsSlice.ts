@@ -64,7 +64,6 @@ const DataRocketsSlice = createSlice({
                 }
             )
         })
-       // state.data = outdata
        state.data = localStorage.getItem('rockets') ? JSON.parse(localStorage.getItem('rockets') || '') : outdata
     }),
     builder.addCase(getDataRockets.rejected, (state, action: PayloadAction<any>) => {

@@ -65,7 +65,6 @@ const DataMissionsSlice = createSlice({
                 }
             )
         })
-       // state.datamissions = outdata
         state.datamissions = localStorage.getItem('missions') ? JSON.parse(localStorage.getItem('missions') || '') : outdata
     }),
     builder.addCase(getDataMissions.rejected, (state, action: PayloadAction<any>) => {
