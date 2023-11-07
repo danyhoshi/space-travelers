@@ -9,6 +9,7 @@ export interface datamission {
     join?: boolean
 }
 
+
 interface getdatamissions {
     loading: boolean
     error: boolean | null
@@ -31,7 +32,7 @@ export const getDataMissions = createAsyncThunk(
 const initialState = {
     loading: false,
     error: null,
-    datamissions: []
+    datamissions: localStorage.getItem('missions') ? JSON.parse(localStorage.getItem('missions') || '') : []
 } as getdatamissions
 
 const DataMissionsSlice = createSlice({
@@ -41,7 +42,9 @@ const DataMissionsSlice = createSlice({
     setJoinMission: (state, action) => {
       state.datamissions.map((mission: datamission) => {
         mission.id === action.payload ? mission.join = !mission.join : mission
-      })}
+      })
+      localStorage.setItem('missions', JSON.stringify(state.datamissions))
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(getDataMissions.pending, (state) => {
@@ -62,7 +65,7 @@ const DataMissionsSlice = createSlice({
                 }
             )
         })
-        state.datamissions = outdata
+        state.datamissions = localStorage.getItem('missions') ? JSON.parse(localStorage.getItem('missions') || '') : outdata
     }),
     builder.addCase(getDataMissions.rejected, (state, action: PayloadAction<any>) => {
         state.loading = false,

@@ -28,9 +28,9 @@ export interface data {
 }
 
 const initialState = {
-    loading: false,
-    error: null,
-    data: []
+  loading: false,
+  error: null,
+  data: localStorage.getItem('rockets') ? JSON.parse(localStorage.getItem('rockets') || '') : []
 } as getData
 
 
@@ -43,6 +43,7 @@ const DataRocketsSlice = createSlice({
         return rocket.id === action.payload;
       });
       state.data[index].selected = !state.data[index].selected
+      localStorage.setItem('rockets', JSON.stringify(state.data))
     },
   },
   extraReducers: (builder) => {
@@ -63,7 +64,7 @@ const DataRocketsSlice = createSlice({
                 }
             )
         })
-        state.data = outdata
+       state.data = localStorage.getItem('rockets') ? JSON.parse(localStorage.getItem('rockets') || '') : outdata
     }),
     builder.addCase(getDataRockets.rejected, (state, action: PayloadAction<any>) => {
         state.loading = false,

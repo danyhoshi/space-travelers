@@ -30,7 +30,7 @@ export const getDataDragons = createAsyncThunk(
 const initialState = {
     loading: false,
     error: null,
-    data: []
+    data: localStorage.getItem('dragons') ? JSON.parse(localStorage.getItem('dragons') || '') : []
 } as getData
 
 
@@ -42,6 +42,7 @@ const DataDragonsSlice = createSlice({
       state.data.map((dragon: data) => {
         dragon.id === action.payload ? dragon.selected = !dragon.selected : dragon
       })
+      localStorage.setItem('dragons', JSON.stringify(state.data))
     },
   },
   extraReducers: (builder) => {
@@ -62,7 +63,7 @@ const DataDragonsSlice = createSlice({
                 }
             )
         })
-        state.data = outdata
+        state.data = localStorage.getItem('dragons') ? JSON.parse(localStorage.getItem('dragons') || '') : outdata
     }),
     builder.addCase(getDataDragons.rejected, (state, action: PayloadAction<any>) => {
         state.loading = false,
