@@ -9,12 +9,18 @@ import Container from 'react-bootstrap/Container';
 import { setSelectedRocket } from '../redux/features/DataRocketsSlice';
 import loadingSVG from '../assets/loading.svg'
 import Badge from 'react-bootstrap/Badge';
+import { useEffect } from 'react';
+import { getDataRockets } from '../redux/features/DataRocketsSlice';
 
 function Rockets() {
 
   const dispatch: AppDispatch = useDispatch()
   const loading = useSelector((state: RootState) => state.rockets.loading)
   const rockets = useSelector((state: RootState) => state.rockets.data)
+
+  useEffect(() => {
+    if(rockets.length === 0) dispatch(getDataRockets())
+  },[]) 
   
   const handleClick = (id: string) => {
     dispatch(setSelectedRocket(id))

@@ -7,9 +7,10 @@ import Card from 'react-bootstrap/Card';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { AppDispatch } from '../redux/store';
-import { setSelectedDragon } from '../redux/features/DataDragonsSlice';
+import { getDataDragons, setSelectedDragon } from '../redux/features/DataDragonsSlice';
 import loadingSVG from '../assets/loading.svg'
 import { data } from '../redux/features/DataDragonsSlice';
+import { useEffect } from 'react';
 
 const Dragons = () => {
       
@@ -17,10 +18,13 @@ const Dragons = () => {
   const dragons = useSelector((state: RootState) => state.dragons.data)
   const loading = useSelector((state: RootState) => state.dragons.loading)
 
+  useEffect(() => {
+    if(dragons.length === 0) dispatch(getDataDragons())
+  },[])
+
   const handleClick = (id: string) => {
     dispatch(setSelectedDragon(id))
   }
-
 
   return (
     <Container style={{marginTop: '4rem'}}> 
