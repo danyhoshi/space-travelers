@@ -5,16 +5,21 @@ import Button from 'react-bootstrap/Button'
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { AppDispatch } from '../redux/store';
-import { setJoinMission } from '../redux/features/DataMissionsSlice';
+import { getDataMissions, setJoinMission } from '../redux/features/DataMissionsSlice';
 import { datamission } from '../redux/features/DataMissionsSlice';
 import '../index.css'
 import loadingSVG from '../assets/loading.svg'
+import { useEffect } from 'react';
 
 const Missions = () => {
 
   const dispatch: AppDispatch = useDispatch()
   const missions = useSelector((state: RootState) => state.missions.datamissions)
   const loading = useSelector((state: RootState) => state.missions.loading)
+
+  useEffect(() => {
+    if(missions.length === 0) dispatch(getDataMissions())
+  },[])
 
   const handleClick = (id: string) => {
     dispatch(setJoinMission(id))

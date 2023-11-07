@@ -19,8 +19,8 @@ function Rockets() {
   const rockets = useSelector((state: RootState) => state.rockets.data)
 
   useEffect(() => {
-    dispatch(getDataRockets())
-  },[])
+    if(rockets.length === 0) dispatch(getDataRockets())
+  },[]) 
   
   const handleClick = (id: string) => {
     dispatch(setSelectedRocket(id))
