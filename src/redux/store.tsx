@@ -7,7 +7,7 @@ import DataDragonsSlice from './features/DataDragonsSlice'
 const rootReducer = combineReducers({
     missions: DataMissionsSlice,
     rockets: DataRocketsSlice,
-    dragons: DataDragonsSlice,
+    dragons: DataDragonsSlice
   })
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
@@ -15,7 +15,7 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false,
+      serializableCheck: false
     }),
     preloadedState
   })
