@@ -3,27 +3,27 @@ import { renderWithProviders } from '../utils/test-utils'
 import { setupStore } from '../redux/store' 
 import { fireEvent, screen, waitForElementToBeRemoved } from '@testing-library/react'
 import 'whatwg-fetch'
-import Rockets from './Rockets'
+import Dragons from './Dragons'
 import '@testing-library/jest-dom';
 
 const store = setupStore()
 
 beforeEach(async () => {
-    renderWithProviders(<Rockets />, { store })
+    renderWithProviders(<Dragons />, { store })
 })
 
-describe('<Rockets />', () => {
+describe('<Dragons />', () => {
 
-    test('should render four buttons: reserve rockets', async () => {
+    test('should render two buttons: reserve dragons', async () => {
         await waitForElementToBeRemoved(() => screen.queryAllByAltText(/loading-svg/i))
-        const reserve = screen.getAllByRole('button', {name: /reserve rocket/i})
-        expect(reserve).toHaveLength(4)
+        const reserve = screen.getAllByRole('button', {name: /reserve dragon/i})
+        expect(reserve).toHaveLength(2)
     })
 
-    test('should reserve  rocket', async () => {
-        const reserve = screen.getAllByRole('button', {name: /reserve rocket/i})
-        fireEvent.click(reserve[0])
+    test('should reserve dragon', async () => {
+        const reserve = screen.getAllByRole('button', {name: /reserve dragon/i})
+        fireEvent.click(reserve[1])
         expect(screen.getByText(/reserved/i)).toBeInTheDocument()
     })
-
+       
 })
