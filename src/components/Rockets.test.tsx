@@ -1,39 +1,29 @@
-import { describe, test } from 'vitest'
+import { describe, test, expect, beforeEach } from 'vitest'
 import { renderWithProviders } from '../utils/test-utils'
 import { setupStore } from '../redux/store' 
-import { screen, waitForElementToBeRemoved } from '@testing-library/react'
+import { fireEvent, screen, waitForElementToBeRemoved } from '@testing-library/react'
 import 'whatwg-fetch'
 import Rockets from './Rockets'
-//import MyProfile from './MyProfile'
-//import Dragons from './Dragons'
-//import Missions from './Missions'
-
+import '@testing-library/jest-dom';
 
 const store = setupStore()
 
+beforeEach(async () => {
+    renderWithProviders(<Rockets />, { store })
+})
+
 describe('<Rockets >', () => {
 
-    test('should pass', async () => {
-        renderWithProviders(<Rockets />, { store })
+    test('should render four buttons: reserve rockets', async () => {
         await waitForElementToBeRemoved(() => screen.queryAllByAltText(/loading-svg/i))
-        //const reserve = screen.getAllByRole('button', {name: /reserve rocket/i})
-        //expect(reserve.length).toEqual(4)
-        screen.debug()
-
-        //renderWithProviders(<Dragons />, { store })
-        //await waitForElementToBeRemoved(() => screen.queryAllByAltText(/loading-svg/i))
-        //const reserve = screen.getAllByRole('button', {name: /reserve rocket/i})
-        //expect(reserve.length).toEqual(4)
-        //screen.debug()
-           
-        //renderWithProviders(<Missions />, { store })
-        //await waitForElementToBeRemoved(() => screen.queryAllByAltText(/loading-svg/i))
-        //const reserve = screen.getAllByRole('button', {name: /reserve rocket/i})
-        //expect(reserve.length).toEqual(4)
-        //screen.debug()
-
+        const reserve = screen.getAllByRole('button', {name: /reserve rocket/i})
+        expect(reserve).toHaveLength(4)
     })
 
-    
-    
+    test('should reserve  rocket', async () => {
+        const reserve = screen.getAllByRole('button', {name: /reserve rocket/i})
+        fireEvent.click(reserve[0])
+        expect(screen.getByText(/reserved/i)).toBeInTheDocument()
+    })
+       
 })
